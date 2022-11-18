@@ -13,7 +13,6 @@ module register_file #(
     output logic [DATA_WIDTH-1:0]           RD2,
     output logic [DATA_WIDTH-1:0]           a0  
 );
-
 //connecting mux logic: ALUsrc ? ImmOp : regOp2;
 
 logic [DATA_WIDTH-1:0] register_array [2**ADDRESS_WIDTH-1:0];
