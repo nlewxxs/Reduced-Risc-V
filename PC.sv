@@ -1,24 +1,30 @@
-module PCReg #(
-    AW=32,
+module PC #(
+    DW=32
 
 ) (
     input logic     clk,
     input logic     rst,
     input logic     PCsrc,
-    input logic   [AW-1:0]  ImmOp,
-    output logic  [AW-1:0]  PC
+    input logic   [DW-1:0]  ImmOp,
+    output logic  [DW-1:0]  PCC
 );
     
-    logic [AW-1:0] inc_PC;
-    logic [AW-1:0] branch_PC;
-    logic [AW-1:0] next_PC;
-    assign branch_PC = PC+ImmOp;
-    assign inc_PC=PC+4;
+    logic [DW-1:0] inc_PC;
+    logic [DW-1:0] branch_PC;
+    logic [DW-1:0] next_PC;
+
+    assign branch_PC = PCC+ImmOp;
+    assign inc_PC=PCC+4;
     assign next_PC=PCsrc ? branch_PC : inc_PC;
+   
+    always_comb begin
+        
+    end
 
     always_ff @(posedge clk ) begin
-        if (rst) PC<=32'b0;
-        else PC<=next_PC;
+        // $display("PC= ",PCC);
+        if (rst) PCC<=32'b0;
+        else PCC<=next_PC;
     end
 
 endmodule 

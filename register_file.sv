@@ -1,5 +1,5 @@
 module register_file #(
-    PARAMETER ADDRESS_WIDTH = 5,
+    parameter ADDRESS_WIDTH = 5,
                 DATA_WIDTH = 32
 )(
     input logic                             clk,
@@ -18,16 +18,20 @@ module register_file #(
 
 logic [DATA_WIDTH-1:0] register_array [2**ADDRESS_WIDTH-1:0];
 
-always_ff @(posedge clk) begin
-    RD1 <= register_array[AD1];
-    RD2 <= register_array[AD2];
-    if(WE3 = 1'b1) begin
-        register_array[AD3] <= WD3;
+initial begin
+    for (int i = 0; i < $size(register_array); i++) begin
+        register_array[i] = 32'b0;
     end
 end
-
-always_comb begin
-    a0 = register_array[0];
+always_ff @(posedge clk) begin
+    if (WE3) register_array[AD3] <= WD3;
+   
 end
+always_comb begin
+   
+    RD1 = register_array[AD1];
+    RD2 = register_array[AD2];
+end
+assign  a0 = register_array[10];
 
 endmodule
