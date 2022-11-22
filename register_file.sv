@@ -18,17 +18,11 @@ module register_file #(
 
 logic [DATA_WIDTH-1:0] register_array [2**ADDRESS_WIDTH-1:0];
 
-initial begin
-    for (int i = 0; i < $size(register_array); i++) begin
-        register_array[i] = 32'b0;
-    end
-end
 always_ff @(posedge clk) begin
     if (WE3) register_array[AD3] <= WD3;
    
 end
 always_comb begin
-   
     RD1 = register_array[AD1];
     RD2 = register_array[AD2];
 end
