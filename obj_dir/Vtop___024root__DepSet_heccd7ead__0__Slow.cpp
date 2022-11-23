@@ -11,51 +11,16 @@ VL_ATTR_COLD void Vtop___024root___initial__TOP__0(Vtop___024root* vlSelf) {
     Vtop__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vtop___024root___initial__TOP__0\n"); );
     // Init
-    VlWide<4>/*127:0*/ __Vtemp_hbd647794__0;
+    VlWide<4>/*127:0*/ __Vtemp_hb0c16d65__0;
     // Body
-    vlSelf->top__DOT__RegFile__DOT__register_array[0U] = 0U;
-    vlSelf->top__DOT__RegFile__DOT__register_array[1U] = 0U;
-    vlSelf->top__DOT__RegFile__DOT__register_array[2U] = 0U;
-    vlSelf->top__DOT__RegFile__DOT__register_array[3U] = 0U;
-    vlSelf->top__DOT__RegFile__DOT__register_array[4U] = 0U;
-    vlSelf->top__DOT__RegFile__DOT__register_array[5U] = 0U;
-    vlSelf->top__DOT__RegFile__DOT__register_array[6U] = 0U;
-    vlSelf->top__DOT__RegFile__DOT__register_array[7U] = 0U;
-    vlSelf->top__DOT__RegFile__DOT__register_array[8U] = 0U;
-    vlSelf->top__DOT__RegFile__DOT__register_array[9U] = 0U;
-    vlSelf->top__DOT__RegFile__DOT__register_array[0xaU] = 0U;
-    vlSelf->top__DOT__RegFile__DOT__register_array[0xbU] = 0U;
-    vlSelf->top__DOT__RegFile__DOT__register_array[0xcU] = 0U;
-    vlSelf->top__DOT__RegFile__DOT__register_array[0xdU] = 0U;
-    vlSelf->top__DOT__RegFile__DOT__register_array[0xeU] = 0U;
-    vlSelf->top__DOT__RegFile__DOT__register_array[0xfU] = 0U;
-    vlSelf->top__DOT__RegFile__DOT__register_array[0x10U] = 0U;
-    vlSelf->top__DOT__RegFile__DOT__register_array[0x11U] = 0U;
-    vlSelf->top__DOT__RegFile__DOT__register_array[0x12U] = 0U;
-    vlSelf->top__DOT__RegFile__DOT__register_array[0x13U] = 0U;
-    vlSelf->top__DOT__RegFile__DOT__register_array[0x14U] = 0U;
-    vlSelf->top__DOT__RegFile__DOT__register_array[0x15U] = 0U;
-    vlSelf->top__DOT__RegFile__DOT__register_array[0x16U] = 0U;
-    vlSelf->top__DOT__RegFile__DOT__register_array[0x17U] = 0U;
-    vlSelf->top__DOT__RegFile__DOT__register_array[0x18U] = 0U;
-    vlSelf->top__DOT__RegFile__DOT__register_array[0x19U] = 0U;
-    vlSelf->top__DOT__RegFile__DOT__register_array[0x1aU] = 0U;
-    vlSelf->top__DOT__RegFile__DOT__register_array[0x1bU] = 0U;
-    vlSelf->top__DOT__RegFile__DOT__register_array[0x1cU] = 0U;
-    vlSelf->top__DOT__RegFile__DOT__register_array[0x1dU] = 0U;
-    vlSelf->top__DOT__RegFile__DOT__register_array[0x1eU] = 0U;
-    vlSelf->top__DOT__RegFile__DOT__register_array[0x1fU] = 0U;
-    vlSelf->top__DOT__RegFile__DOT__unnamedblk1__DOT__i = 0x20U;
     VL_WRITEF("Loading rom.\n");
-    __Vtemp_hbd647794__0[0U] = 0x2e6d656dU;
-    __Vtemp_hbd647794__0[1U] = 0x5f726f6dU;
-    __Vtemp_hbd647794__0[2U] = 0x6d706c65U;
-    __Vtemp_hbd647794__0[3U] = 0x657861U;
-    VL_READMEM_N(true, 8, 31, 0, VL_CVT_PACK_STR_NW(4, __Vtemp_hbd647794__0)
+    __Vtemp_hb0c16d65__0[0U] = 0x2e6d656dU;
+    __Vtemp_hb0c16d65__0[1U] = 0x5f726f6dU;
+    __Vtemp_hb0c16d65__0[2U] = 0x6d706c65U;
+    __Vtemp_hb0c16d65__0[3U] = 0x657861U;
+    VL_READMEM_N(true, 8, 256, 0, VL_CVT_PACK_STR_NW(4, __Vtemp_hb0c16d65__0)
                  ,  &(vlSelf->top__DOT__ROM__DOT__rom_array)
                  , 0, ~0ULL);
-    VL_WRITEF("done loading rom.\n%3#\n",8,vlSelf->top__DOT__ROM__DOT__rom_array
-              [0x1bU]);
 }
 
 VL_ATTR_COLD void Vtop___024root___settle__TOP__0(Vtop___024root* vlSelf) {
@@ -65,31 +30,8 @@ VL_ATTR_COLD void Vtop___024root___settle__TOP__0(Vtop___024root* vlSelf) {
     // Body
     vlSelf->a0out = vlSelf->top__DOT__RegFile__DOT__register_array
         [0xaU];
-    vlSelf->InstructionWire = ((((0x1eU >= (0x1fU & vlSelf->top__DOT__PCWire))
-                                  ? vlSelf->top__DOT__ROM__DOT__rom_array
-                                 [(0x1fU & vlSelf->top__DOT__PCWire)]
-                                  : 0U) << 0x18U) | 
-                               ((((0x1eU >= (0x1fU 
-                                             & ((IData)(1U) 
-                                                + vlSelf->top__DOT__PCWire)))
-                                   ? vlSelf->top__DOT__ROM__DOT__rom_array
-                                  [(0x1fU & ((IData)(1U) 
-                                             + vlSelf->top__DOT__PCWire))]
-                                   : 0U) << 0x10U) 
-                                | ((((0x1eU >= (0x1fU 
-                                                & ((IData)(2U) 
-                                                   + vlSelf->top__DOT__PCWire)))
-                                      ? vlSelf->top__DOT__ROM__DOT__rom_array
-                                     [(0x1fU & ((IData)(2U) 
-                                                + vlSelf->top__DOT__PCWire))]
-                                      : 0U) << 8U) 
-                                   | ((0x1eU >= (0x1fU 
-                                                 & ((IData)(3U) 
-                                                    + vlSelf->top__DOT__PCWire)))
-                                       ? vlSelf->top__DOT__ROM__DOT__rom_array
-                                      [(0x1fU & ((IData)(3U) 
-                                                 + vlSelf->top__DOT__PCWire))]
-                                       : 0U))));
+    vlSelf->InstructionWire = vlSelf->top__DOT__ROM__DOT__rom_array
+        [(0xffU & vlSelf->top__DOT__PCWire)];
     vlSelf->top__DOT__RD1Wire = vlSelf->top__DOT__RegFile__DOT__register_array
         [(0x1fU & (vlSelf->InstructionWire >> 0xfU))];
     vlSelf->top__DOT__control__DOT__opcode = (0x7fU 
@@ -152,11 +94,21 @@ VL_ATTR_COLD void Vtop___024root___settle__TOP__0(Vtop___024root* vlSelf) {
                                              ? 0U : 0U)
                                          : 0U) : ((0x2000U 
                                                    & vlSelf->InstructionWire)
-                                                   ? 0U
+                                                   ? 
+                                                  ((0x1000U 
+                                                    & vlSelf->InstructionWire)
+                                                    ? 
+                                                   (vlSelf->top__DOT__RD1Wire 
+                                                    | vlSelf->top__DOT__aluCPU__DOT__ALUop2)
+                                                    : 
+                                                   (vlSelf->top__DOT__RD1Wire 
+                                                    & vlSelf->top__DOT__aluCPU__DOT__ALUop2))
                                                    : 
                                                   ((0x1000U 
                                                     & vlSelf->InstructionWire)
-                                                    ? 0U
+                                                    ? 
+                                                   (vlSelf->top__DOT__RD1Wire 
+                                                    - vlSelf->top__DOT__aluCPU__DOT__ALUop2)
                                                     : 
                                                    (vlSelf->top__DOT__RD1Wire 
                                                     + vlSelf->top__DOT__aluCPU__DOT__ALUop2))));
@@ -209,14 +161,13 @@ VL_ATTR_COLD void Vtop___024root___ctor_var_reset(Vtop___024root* vlSelf) {
     vlSelf->top__DOT__ALUsrcWire = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__ImmSrcWire = VL_RAND_RESET_I(3);
     vlSelf->top__DOT__PC__DOT__next_PC = VL_RAND_RESET_I(32);
-    for (int __Vi0=0; __Vi0<31; ++__Vi0) {
+    for (int __Vi0=0; __Vi0<256; ++__Vi0) {
         vlSelf->top__DOT__ROM__DOT__rom_array[__Vi0] = VL_RAND_RESET_I(8);
     }
     vlSelf->top__DOT__control__DOT__opcode = VL_RAND_RESET_I(7);
     for (int __Vi0=0; __Vi0<32; ++__Vi0) {
         vlSelf->top__DOT__RegFile__DOT__register_array[__Vi0] = VL_RAND_RESET_I(32);
     }
-    vlSelf->top__DOT__RegFile__DOT__unnamedblk1__DOT__i = 0;
     vlSelf->top__DOT__extendo__DOT__immediate = VL_RAND_RESET_I(12);
     vlSelf->top__DOT__extendo__DOT__msb = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__aluCPU__DOT__ALUop2 = VL_RAND_RESET_I(32);

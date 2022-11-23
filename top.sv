@@ -34,8 +34,7 @@ module top #(
     
     ROM ROM(
         .A(PCWire),
-        
-        .dout1(InstructionWire)
+        .RD(InstructionWire)
     );
    
     assign rs1 = InstructionWire[19:15];

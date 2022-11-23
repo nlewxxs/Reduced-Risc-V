@@ -31,31 +31,8 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__0(Vtop___024root* vlSelf) {
     }
     vlSelf->a0out = vlSelf->top__DOT__RegFile__DOT__register_array
         [0xaU];
-    vlSelf->InstructionWire = ((((0x1eU >= (0x1fU & vlSelf->top__DOT__PCWire))
-                                  ? vlSelf->top__DOT__ROM__DOT__rom_array
-                                 [(0x1fU & vlSelf->top__DOT__PCWire)]
-                                  : 0U) << 0x18U) | 
-                               ((((0x1eU >= (0x1fU 
-                                             & ((IData)(1U) 
-                                                + vlSelf->top__DOT__PCWire)))
-                                   ? vlSelf->top__DOT__ROM__DOT__rom_array
-                                  [(0x1fU & ((IData)(1U) 
-                                             + vlSelf->top__DOT__PCWire))]
-                                   : 0U) << 0x10U) 
-                                | ((((0x1eU >= (0x1fU 
-                                                & ((IData)(2U) 
-                                                   + vlSelf->top__DOT__PCWire)))
-                                      ? vlSelf->top__DOT__ROM__DOT__rom_array
-                                     [(0x1fU & ((IData)(2U) 
-                                                + vlSelf->top__DOT__PCWire))]
-                                      : 0U) << 8U) 
-                                   | ((0x1eU >= (0x1fU 
-                                                 & ((IData)(3U) 
-                                                    + vlSelf->top__DOT__PCWire)))
-                                       ? vlSelf->top__DOT__ROM__DOT__rom_array
-                                      [(0x1fU & ((IData)(3U) 
-                                                 + vlSelf->top__DOT__PCWire))]
-                                       : 0U))));
+    vlSelf->InstructionWire = vlSelf->top__DOT__ROM__DOT__rom_array
+        [(0xffU & vlSelf->top__DOT__PCWire)];
     vlSelf->top__DOT__RD1Wire = vlSelf->top__DOT__RegFile__DOT__register_array
         [(0x1fU & (vlSelf->InstructionWire >> 0xfU))];
 }
@@ -125,11 +102,21 @@ VL_INLINE_OPT void Vtop___024root___combo__TOP__0(Vtop___024root* vlSelf) {
                                              ? 0U : 0U)
                                          : 0U) : ((0x2000U 
                                                    & vlSelf->InstructionWire)
-                                                   ? 0U
+                                                   ? 
+                                                  ((0x1000U 
+                                                    & vlSelf->InstructionWire)
+                                                    ? 
+                                                   (vlSelf->top__DOT__RD1Wire 
+                                                    | vlSelf->top__DOT__aluCPU__DOT__ALUop2)
+                                                    : 
+                                                   (vlSelf->top__DOT__RD1Wire 
+                                                    & vlSelf->top__DOT__aluCPU__DOT__ALUop2))
                                                    : 
                                                   ((0x1000U 
                                                     & vlSelf->InstructionWire)
-                                                    ? 0U
+                                                    ? 
+                                                   (vlSelf->top__DOT__RD1Wire 
+                                                    - vlSelf->top__DOT__aluCPU__DOT__ALUop2)
                                                     : 
                                                    (vlSelf->top__DOT__RD1Wire 
                                                     + vlSelf->top__DOT__aluCPU__DOT__ALUop2))));
