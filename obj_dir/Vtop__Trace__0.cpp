@@ -71,30 +71,28 @@ void Vtop___024root__trace_chg_sub_0(Vtop___024root* vlSelf, VerilatedVcd::Buffe
         bufp->chgCData(oldp+41,(vlSelf->top__DOT__ImmSrcWire),3);
         bufp->chgIData(oldp+42,(vlSelf->top__DOT__aluCPU__DOT__ALUop2),32);
         bufp->chgCData(oldp+43,(vlSelf->top__DOT__control__DOT__opcode),7);
-        bufp->chgSData(oldp+44,(vlSelf->top__DOT__extendo__DOT__immediate),12);
-        bufp->chgBit(oldp+45,(vlSelf->top__DOT__extendo__DOT__msb));
     }
-    bufp->chgBit(oldp+46,(vlSelf->clk));
-    bufp->chgBit(oldp+47,(vlSelf->rst));
-    bufp->chgIData(oldp+48,(vlSelf->a0out),32);
-    bufp->chgIData(oldp+49,(vlSelf->InstructionWire),32);
-    bufp->chgIData(oldp+50,(vlSelf->ImmOpWire),32);
-    bufp->chgIData(oldp+51,(vlSelf->top__DOT__RegFile__DOT__register_array
+    bufp->chgBit(oldp+44,(vlSelf->clk));
+    bufp->chgBit(oldp+45,(vlSelf->rst));
+    bufp->chgIData(oldp+46,(vlSelf->a0out),32);
+    bufp->chgIData(oldp+47,(vlSelf->InstructionWire),32);
+    bufp->chgIData(oldp+48,(vlSelf->ImmOpWire),32);
+    bufp->chgIData(oldp+49,(vlSelf->top__DOT__RegFile__DOT__register_array
                             [(0x1fU & (vlSelf->InstructionWire 
                                        >> 0x14U))]),32);
-    bufp->chgBit(oldp+52,((vlSelf->top__DOT__RD1Wire 
+    bufp->chgBit(oldp+50,((vlSelf->top__DOT__RD1Wire 
                            == vlSelf->top__DOT__aluCPU__DOT__ALUop2)));
-    bufp->chgCData(oldp+53,((7U & (vlSelf->InstructionWire 
+    bufp->chgCData(oldp+51,((7U & (vlSelf->InstructionWire 
                                    >> 0xcU))),3);
-    bufp->chgCData(oldp+54,((0x1fU & (vlSelf->InstructionWire 
+    bufp->chgCData(oldp+52,((0x1fU & (vlSelf->InstructionWire 
                                       >> 0xfU))),5);
-    bufp->chgCData(oldp+55,((0x1fU & (vlSelf->InstructionWire 
+    bufp->chgCData(oldp+53,((0x1fU & (vlSelf->InstructionWire 
                                       >> 0x14U))),5);
-    bufp->chgCData(oldp+56,((0x1fU & (vlSelf->InstructionWire 
+    bufp->chgCData(oldp+54,((0x1fU & (vlSelf->InstructionWire 
                                       >> 7U))),5);
-    bufp->chgIData(oldp+57,((vlSelf->top__DOT__PCWire 
+    bufp->chgIData(oldp+55,((vlSelf->top__DOT__PCWire 
                              + vlSelf->ImmOpWire)),32);
-    bufp->chgIData(oldp+58,(((IData)(vlSelf->top__DOT__PCsrsWire)
+    bufp->chgIData(oldp+56,(((IData)(vlSelf->top__DOT__PCsrsWire)
                               ? (vlSelf->top__DOT__PCWire 
                                  + vlSelf->ImmOpWire)
                               : ((IData)(4U) + vlSelf->top__DOT__PCWire))),32);

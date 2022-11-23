@@ -52,30 +52,17 @@ VL_ATTR_COLD void Vtop___024root___settle__TOP__0(Vtop___024root* vlSelf) {
         vlSelf->top__DOT__RegWriteWire = 0U;
         vlSelf->top__DOT__PCsrsWire = 0U;
     }
-    if ((0U == (IData)(vlSelf->top__DOT__ImmSrcWire))) {
-        vlSelf->top__DOT__extendo__DOT__immediate = 
-            (vlSelf->InstructionWire >> 0x14U);
-        vlSelf->top__DOT__extendo__DOT__msb = (1U & 
-                                               ((IData)(vlSelf->top__DOT__extendo__DOT__immediate) 
-                                                >> 0xbU));
-        vlSelf->ImmOpWire = (((- (IData)((IData)(vlSelf->top__DOT__extendo__DOT__msb))) 
-                              << 0xcU) | (IData)(vlSelf->top__DOT__extendo__DOT__immediate));
-    } else if ((1U == (IData)(vlSelf->top__DOT__ImmSrcWire))) {
-        vlSelf->top__DOT__extendo__DOT__immediate = 
-            ((0x800U & (vlSelf->InstructionWire >> 0x14U)) 
-             | ((0x400U & (vlSelf->InstructionWire 
-                           << 3U)) | ((0x3f0U & (vlSelf->InstructionWire 
-                                                 >> 0x15U)) 
-                                      | (0xfU & (vlSelf->InstructionWire 
-                                                 >> 8U)))));
-        vlSelf->top__DOT__extendo__DOT__msb = (1U & 
-                                               ((IData)(vlSelf->top__DOT__extendo__DOT__immediate) 
-                                                >> 0xbU));
-        vlSelf->ImmOpWire = (((- (IData)((IData)(vlSelf->top__DOT__extendo__DOT__msb))) 
-                              << 0xcU) | (IData)(vlSelf->top__DOT__extendo__DOT__immediate));
-    } else {
-        vlSelf->ImmOpWire = 0U;
-    }
+    vlSelf->ImmOpWire = ((0U == (IData)(vlSelf->top__DOT__ImmSrcWire))
+                          ? (((- (IData)((vlSelf->InstructionWire 
+                                          >> 0x1fU))) 
+                              << 0xcU) | (vlSelf->InstructionWire 
+                                          >> 0x14U))
+                          : ((1U == (IData)(vlSelf->top__DOT__ImmSrcWire))
+                              ? (((- (IData)((vlSelf->InstructionWire 
+                                              >> 0x1fU))) 
+                                  << 0x14U) | (vlSelf->InstructionWire 
+                                               >> 0xcU))
+                              : 0U));
     vlSelf->top__DOT__PC__DOT__next_PC = ((IData)(vlSelf->top__DOT__PCsrsWire)
                                            ? (vlSelf->top__DOT__PCWire 
                                               + vlSelf->ImmOpWire)
@@ -168,8 +155,6 @@ VL_ATTR_COLD void Vtop___024root___ctor_var_reset(Vtop___024root* vlSelf) {
     for (int __Vi0=0; __Vi0<32; ++__Vi0) {
         vlSelf->top__DOT__RegFile__DOT__register_array[__Vi0] = VL_RAND_RESET_I(32);
     }
-    vlSelf->top__DOT__extendo__DOT__immediate = VL_RAND_RESET_I(12);
-    vlSelf->top__DOT__extendo__DOT__msb = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__aluCPU__DOT__ALUop2 = VL_RAND_RESET_I(32);
     vlSelf->__Vchglast__TOP__top__DOT__aluCPU__DOT__ALUop2 = VL_RAND_RESET_I(32);
     for (int __Vi0=0; __Vi0<3; ++__Vi0) {

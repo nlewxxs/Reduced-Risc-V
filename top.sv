@@ -63,11 +63,10 @@ module top #(
         .RD1(RD1Wire),
         .RD2(RD2Wire)
     );
-    signextendo extendo(
+    sign_extend extend(
         .instr(InstructionWire),
-        .ImmSrc(ImmSrcWire),
-
-        .ImmOp(ImmOpWire)
+        .immsrc(ImmSrcWire),
+        .immop(ImmOpWire)
     );
     ALU aluCPU(
         .ALUop1(RD1Wire),
