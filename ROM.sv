@@ -2,8 +2,8 @@ module rom #(
     parameter   ADDRESS_WIDTH = 8,
                 DATA_WIDTH = 8
 )(
-    input logic [ADDRESS_WIDTH-1:0]   A,
-    output logic [ADDRESS_WIDTH-1:0]  dout1,
+    input logic     [ADDRESS_WIDTH-1:0]         a,
+    output logic    [ADDRESS_WIDTH-1:0]         rd
 );
 
 logic [DATA_WIDTH-1:0] rom_array [2**ADDRESS_WIDTH-1:0];
@@ -15,6 +15,6 @@ end
 
 always_comb begin
     //output is asynchronous
-    RD <= rom_array[A];
+    rd <= rom_array[a];
 end
 endmodule
