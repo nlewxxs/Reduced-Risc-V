@@ -25,48 +25,44 @@ int main(int argc, char **argv, char **env) {
  
   // init Vbuddy
   if (vbdOpen()!=1) return(-1);
-  vbdHeader("Simple RISC-V CPU");
-  vbdSetMode(1);        // Flag mode set to one-shot
+  vbdHeader("L3T2:kos");
+  vbdSetMode(0);        // Flag mode set to one-shot
 
   // initialize simulation inputs
   top->clk = 0;
   top->rst=0;
  
   // run simulation for MAX_SIM_CYC clock cycles
-  int sim = 0;
   for (simcyc=0; simcyc<MAX_SIM_CYC; simcyc++) {
     // dump variables into VCD file and toggle clock
-    
-    if(vbdFlag()){
-      for (int clk=0; clk<2; clk++) {
-        tfp->dump (2*sim+clk);
-        top->clk = !top->clk;
-        top->eval ();
-      }
-      
-      vbdCycle(sim);
-      //top->rst = (simcyc < 2);    // assert reset for 1st cycle
+    // if(vbdFlag()){
+    for (tick=0; tick<2 && vbdFlag(); tick++) {
+      tfp->dump (2*simcyc+tick);
+      top->clk = !top->clk;
+      top->eval ();
+    }
+     
+    vbdCycle(simcyc);
+    top->rst = (simcyc < 2);    // assert reset for 1st cycle
 
-      vbdHex(3,(int(top->a0out)>>8)&0xF);
-      vbdHex(2,(int(top->a0out)>>4)&0xF);
-      vbdHex(1,int(top->a0out)&0xF);
-      
-      sim++;
-      // if (vbdFlag()){
-      //   std::stringstream stream;
-      //   stream << std::hex << top->InstructionWire;
-      //   std::string result( stream.str());
+    vbdHex(3,(int(top->a0out)>>8)&0xF);
+    vbdHex(2,(int(top->a0out)>>4)&0xF);
+    vbdHex(1,int(top->a0out)&0xF);
+    // if (vbdFlag()){
+    //   std::stringstream stream;
+    //   stream << std::hex << top->InstructionWire;
+    //   std::string result( stream.str());
 
-      //   std::stringstream output;
-      //   output << std::hex << top->a0out;
-      //   std::string result2( output.str());
+    //   std::stringstream output;
+    //   output << std::hex << top->a0out;
+    //   std::string result2( output.str());
 
-      //   std::stringstream imm;
-      //   imm << std::hex << top->ImmOpWire;
-      //   std::string result3( imm.str());
+    //   std::stringstream imm;
+    //   imm << std::hex << top->ImmOpWire;
+    //   std::string result3( imm.str());
 
-      //   std::cout << "Instr: "<< result<< " output: "<< result2<<" imm: "<< result3<<  std::endl;
-      }
+    //   std::cout << "Instr: "<< result<< " output: "<< result2<<" imm: "<< result3<<  std::endl;
+    // }
 
 }
 vbdClose();     // ++++

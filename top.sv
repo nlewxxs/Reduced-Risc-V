@@ -32,9 +32,10 @@ module top #(
         .PCC(PCWire)
     );
     
-    ROM ROM(
-        .A(PCWire),
-        .RD(InstructionWire)
+    romF romF(
+        .a(PCWire),
+        
+        .rd(InstructionWire)
     );
    
     assign rs1 = InstructionWire[19:15];
@@ -63,10 +64,11 @@ module top #(
         .RD1(RD1Wire),
         .RD2(RD2Wire)
     );
-    sign_extend extend(
+    signextendo extendo(
         .instr(InstructionWire),
-        .immsrc(ImmSrcWire),
-        .immop(ImmOpWire)
+        .ImmSrc(ImmSrcWire),
+
+        .ImmOp(ImmOpWire)
     );
     ALU aluCPU(
         .ALUop1(RD1Wire),

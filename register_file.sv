@@ -13,7 +13,6 @@ module register_file #(
     output logic [DATA_WIDTH-1:0]           RD2,
     output logic [DATA_WIDTH-1:0]           a0  
 );
-//connecting mux logic: ALUsrc ? ImmOp : regOp2;
 
 logic [DATA_WIDTH-1:0] register_array [2**ADDRESS_WIDTH-1:0];
 
@@ -24,17 +23,6 @@ end
 always_comb begin
     RD1 = register_array[AD1];
     RD2 = register_array[AD2];
-end
-
-always_comb begin
-    $display("###########################################################");
-    $display("registers");
-    $display("t1");
-    $displayh(register_array[6]);
-    $display("a0");
-    $displayh(register_array[10]);
-    $display("a1");
-    $displayh(register_array[11]);
 end
 
 assign  a0 = register_array[10];

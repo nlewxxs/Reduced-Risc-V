@@ -20,20 +20,11 @@ always_comb begin
         3'b000: ALUout = ALUop1 + ALUop2;
         3'b001: ALUout= ALUop1 - ALUop2;
         3'b010: ALUout= ALUop1 & ALUop2;
-        3'b011: ALUout= ALUop1 | ALUop2;
-        3'b100: ALUout= 32'b0;
-        3'b101: ALUout= 32'b0;
-        3'b110: ALUout= 32'b0;
         default: ALUout = 0;
     endcase
     
 end
 assign Eq = (ALUop1==ALUop2);
-// always_ff @(posedge clk) begin
-//     $display("aluop1: ",ALUop1);
-//     $display("aluop2: ",ALUop2);
-//     $display("eq : ",Eq);
-// end
 
 
 endmodule 
