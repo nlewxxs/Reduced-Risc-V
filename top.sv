@@ -32,7 +32,7 @@ module top #(
         .PCC(PCWire)
     );
     
-    romF romF(
+    rom rom(
         .a(PCWire),
         
         .rd(InstructionWire)

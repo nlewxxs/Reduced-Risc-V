@@ -20,7 +20,9 @@ class Vtop___024root final : public VerilatedModule {
     CData/*0:0*/ top__DOT__ALUsrcWire;
     CData/*2:0*/ top__DOT__ImmSrcWire;
     CData/*6:0*/ top__DOT__control__DOT__opcode;
+    CData/*0:0*/ top__DOT__extendo__DOT__msb;
     CData/*0:0*/ __Vclklast__TOP__clk;
+    SData/*11:0*/ top__DOT__extendo__DOT__immediate;
     VL_OUT(a0out,31,0);
     VL_OUT(InstructionWire,31,0);
     VL_OUT(ImmOpWire,31,0);
@@ -30,7 +32,7 @@ class Vtop___024root final : public VerilatedModule {
     IData/*31:0*/ top__DOT__PC__DOT__next_PC;
     IData/*31:0*/ top__DOT__aluCPU__DOT__ALUop2;
     IData/*31:0*/ __Vchglast__TOP__top__DOT__aluCPU__DOT__ALUop2;
-    VlUnpacked<CData/*7:0*/, 256> top__DOT__ROM__DOT__rom_array;
+    VlUnpacked<CData/*7:0*/, 28> top__DOT__rom__DOT__rom_array;
     VlUnpacked<IData/*31:0*/, 32> top__DOT__RegFile__DOT__register_array;
     VlUnpacked<CData/*0:0*/, 3> __Vm_traceActivity;
 
