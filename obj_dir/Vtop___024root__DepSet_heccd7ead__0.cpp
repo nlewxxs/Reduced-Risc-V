@@ -31,8 +31,31 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__0(Vtop___024root* vlSelf) {
     }
     vlSelf->a0out = vlSelf->top__DOT__RegFile__DOT__register_array
         [0xaU];
-    vlSelf->InstructionWire = vlSelf->top__DOT__ROM__DOT__rom_array
-        [(0xffU & vlSelf->top__DOT__PCWire)];
+    vlSelf->InstructionWire = ((((0x1bU >= (0x1fU & vlSelf->top__DOT__PCWire))
+                                  ? vlSelf->top__DOT__rom__DOT__rom_array
+                                 [(0x1fU & vlSelf->top__DOT__PCWire)]
+                                  : 0U) << 0x18U) | 
+                               ((((0x1bU >= (0x1fU 
+                                             & ((IData)(1U) 
+                                                + vlSelf->top__DOT__PCWire)))
+                                   ? vlSelf->top__DOT__rom__DOT__rom_array
+                                  [(0x1fU & ((IData)(1U) 
+                                             + vlSelf->top__DOT__PCWire))]
+                                   : 0U) << 0x10U) 
+                                | ((((0x1bU >= (0x1fU 
+                                                & ((IData)(2U) 
+                                                   + vlSelf->top__DOT__PCWire)))
+                                      ? vlSelf->top__DOT__rom__DOT__rom_array
+                                     [(0x1fU & ((IData)(2U) 
+                                                + vlSelf->top__DOT__PCWire))]
+                                      : 0U) << 8U) 
+                                   | ((0x1bU >= (0x1fU 
+                                                 & ((IData)(3U) 
+                                                    + vlSelf->top__DOT__PCWire)))
+                                       ? vlSelf->top__DOT__rom__DOT__rom_array
+                                      [(0x1fU & ((IData)(3U) 
+                                                 + vlSelf->top__DOT__PCWire))]
+                                       : 0U))));
     vlSelf->top__DOT__RD1Wire = vlSelf->top__DOT__RegFile__DOT__register_array
         [(0x1fU & (vlSelf->InstructionWire >> 0xfU))];
 }
@@ -60,17 +83,30 @@ VL_INLINE_OPT void Vtop___024root___combo__TOP__0(Vtop___024root* vlSelf) {
         vlSelf->top__DOT__RegWriteWire = 0U;
         vlSelf->top__DOT__PCsrsWire = 0U;
     }
-    vlSelf->ImmOpWire = ((0U == (IData)(vlSelf->top__DOT__ImmSrcWire))
-                          ? (((- (IData)((vlSelf->InstructionWire 
-                                          >> 0x1fU))) 
-                              << 0xcU) | (vlSelf->InstructionWire 
-                                          >> 0x14U))
-                          : ((1U == (IData)(vlSelf->top__DOT__ImmSrcWire))
-                              ? (((- (IData)((vlSelf->InstructionWire 
-                                              >> 0x1fU))) 
-                                  << 0x14U) | (vlSelf->InstructionWire 
-                                               >> 0xcU))
-                              : 0U));
+    if ((0U == (IData)(vlSelf->top__DOT__ImmSrcWire))) {
+        vlSelf->top__DOT__extendo__DOT__immediate = 
+            (vlSelf->InstructionWire >> 0x14U);
+        vlSelf->top__DOT__extendo__DOT__msb = (1U & 
+                                               ((IData)(vlSelf->top__DOT__extendo__DOT__immediate) 
+                                                >> 0xbU));
+        vlSelf->ImmOpWire = (((- (IData)((IData)(vlSelf->top__DOT__extendo__DOT__msb))) 
+                              << 0xcU) | (IData)(vlSelf->top__DOT__extendo__DOT__immediate));
+    } else if ((1U == (IData)(vlSelf->top__DOT__ImmSrcWire))) {
+        vlSelf->top__DOT__extendo__DOT__immediate = 
+            ((0x800U & (vlSelf->InstructionWire >> 0x14U)) 
+             | ((0x400U & (vlSelf->InstructionWire 
+                           << 3U)) | ((0x3f0U & (vlSelf->InstructionWire 
+                                                 >> 0x15U)) 
+                                      | (0xfU & (vlSelf->InstructionWire 
+                                                 >> 8U)))));
+        vlSelf->top__DOT__extendo__DOT__msb = (1U & 
+                                               ((IData)(vlSelf->top__DOT__extendo__DOT__immediate) 
+                                                >> 0xbU));
+        vlSelf->ImmOpWire = (((- (IData)((IData)(vlSelf->top__DOT__extendo__DOT__msb))) 
+                              << 0xcU) | (IData)(vlSelf->top__DOT__extendo__DOT__immediate));
+    } else {
+        vlSelf->ImmOpWire = 0U;
+    }
     vlSelf->top__DOT__PC__DOT__next_PC = ((IData)(vlSelf->top__DOT__PCsrsWire)
                                            ? (vlSelf->top__DOT__PCWire 
                                               + vlSelf->ImmOpWire)
@@ -82,31 +118,22 @@ VL_INLINE_OPT void Vtop___024root___combo__TOP__0(Vtop___024root* vlSelf) {
                                              [(0x1fU 
                                                & (vlSelf->InstructionWire 
                                                   >> 0x14U))]);
-    vlSelf->top__DOT__ALUoutWire = ((0x4000U & vlSelf->InstructionWire)
-                                     ? ((0x2000U & vlSelf->InstructionWire)
-                                         ? ((0x1000U 
-                                             & vlSelf->InstructionWire)
-                                             ? 0U : 0U)
-                                         : 0U) : ((0x2000U 
-                                                   & vlSelf->InstructionWire)
-                                                   ? 
-                                                  ((0x1000U 
-                                                    & vlSelf->InstructionWire)
-                                                    ? 
-                                                   (vlSelf->top__DOT__RD1Wire 
-                                                    | vlSelf->top__DOT__aluCPU__DOT__ALUop2)
-                                                    : 
-                                                   (vlSelf->top__DOT__RD1Wire 
-                                                    & vlSelf->top__DOT__aluCPU__DOT__ALUop2))
-                                                   : 
-                                                  ((0x1000U 
-                                                    & vlSelf->InstructionWire)
-                                                    ? 
-                                                   (vlSelf->top__DOT__RD1Wire 
-                                                    - vlSelf->top__DOT__aluCPU__DOT__ALUop2)
-                                                    : 
-                                                   (vlSelf->top__DOT__RD1Wire 
-                                                    + vlSelf->top__DOT__aluCPU__DOT__ALUop2))));
+    vlSelf->top__DOT__ALUoutWire = ((0U == (7U & (vlSelf->InstructionWire 
+                                                  >> 0xcU)))
+                                     ? (vlSelf->top__DOT__RD1Wire 
+                                        + vlSelf->top__DOT__aluCPU__DOT__ALUop2)
+                                     : ((1U == (7U 
+                                                & (vlSelf->InstructionWire 
+                                                   >> 0xcU)))
+                                         ? (vlSelf->top__DOT__RD1Wire 
+                                            - vlSelf->top__DOT__aluCPU__DOT__ALUop2)
+                                         : ((2U == 
+                                             (7U & 
+                                              (vlSelf->InstructionWire 
+                                               >> 0xcU)))
+                                             ? (vlSelf->top__DOT__RD1Wire 
+                                                & vlSelf->top__DOT__aluCPU__DOT__ALUop2)
+                                             : 0U)));
 }
 
 void Vtop___024root___eval(Vtop___024root* vlSelf) {

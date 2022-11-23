@@ -32,17 +32,8 @@ module control #(
             ImmSrc=3'b000;
             RegWrite=1'b0;
             PCsrc=1'b0;
-        end
-            
+        end          
         endcase
 
-
-
-
     end
-     
-
-
-
-    
 endmodule
