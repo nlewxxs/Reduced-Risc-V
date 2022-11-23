@@ -18,6 +18,7 @@ always_comb begin
     //output is asynchronous
     RD = {rom_array[A], rom_array[A+1], rom_array[A+2], rom_array[A+3]}; //move along each word
 
+    $display("next Cycle");
     $displayh({rom_array[A], rom_array[A+1], rom_array[A+2], rom_array[A+3]});
     $display(A);
 end

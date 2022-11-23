@@ -25,6 +25,18 @@ always_comb begin
     RD1 = register_array[AD1];
     RD2 = register_array[AD2];
 end
+
+always_comb begin
+    $display("###########################################################");
+    $display("registers");
+    $display("t1");
+    $displayh(register_array[6]);
+    $display("a0");
+    $displayh(register_array[10]);
+    $display("a1");
+    $displayh(register_array[11]);
+end
+
 assign  a0 = register_array[10];
 
 endmodule
