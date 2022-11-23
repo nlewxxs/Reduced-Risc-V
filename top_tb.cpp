@@ -37,9 +37,9 @@ int main(int argc, char **argv, char **env) {
   for (simcyc=0; simcyc<MAX_SIM_CYC; simcyc++) {
     // dump variables into VCD file and toggle clock
     
-    //if(vbdFlag()){
+    if(vbdFlag()){
       for (int clk=0; clk<2; clk++) {
-        tfp->dump (2*simcyc+clk);
+        tfp->dump (2*sim+clk);
         top->clk = !top->clk;
         top->eval ();
       }
@@ -47,11 +47,11 @@ int main(int argc, char **argv, char **env) {
       vbdCycle(sim);
       //top->rst = (simcyc < 2);    // assert reset for 1st cycle
 
-      //vbdHex(3,(int(top->a0out)>>8)&0xF);
-      //vbdHex(2,(int(top->a0out)>>4)&0xF);
-      //vbdHex(1,int(top->a0out)&0xF);
+      vbdHex(3,(int(top->a0out)>>8)&0xF);
+      vbdHex(2,(int(top->a0out)>>4)&0xF);
+      vbdHex(1,int(top->a0out)&0xF);
       
-      //sim++;
+      sim++;
       // if (vbdFlag()){
       //   std::stringstream stream;
       //   stream << std::hex << top->InstructionWire;
@@ -66,7 +66,7 @@ int main(int argc, char **argv, char **env) {
       //   std::string result3( imm.str());
 
       //   std::cout << "Instr: "<< result<< " output: "<< result2<<" imm: "<< result3<<  std::endl;
-      //}
+      }
 
 }
 vbdClose();     // ++++

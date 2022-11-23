@@ -31,8 +31,39 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__0(Vtop___024root* vlSelf) {
     }
     vlSelf->a0out = vlSelf->top__DOT__RegFile__DOT__register_array
         [0xaU];
-    vlSelf->InstructionWire = vlSelf->top__DOT__ROM__DOT__rom_array
-        [(0xffU & vlSelf->top__DOT__PCWire)];
+    VL_WRITEF("%x\n%3#\n",32,((vlSelf->top__DOT__ROM__DOT__rom_array
+                               [(0xffU & vlSelf->top__DOT__PCWire)] 
+                               << 0x18U) | ((vlSelf->top__DOT__ROM__DOT__rom_array
+                                             [(0xffU 
+                                               & ((IData)(1U) 
+                                                  + vlSelf->top__DOT__PCWire))] 
+                                             << 0x10U) 
+                                            | ((vlSelf->top__DOT__ROM__DOT__rom_array
+                                                [(0xffU 
+                                                  & ((IData)(2U) 
+                                                     + vlSelf->top__DOT__PCWire))] 
+                                                << 8U) 
+                                               | vlSelf->top__DOT__ROM__DOT__rom_array
+                                               [(0xffU 
+                                                 & ((IData)(3U) 
+                                                    + vlSelf->top__DOT__PCWire))]))),
+              8,(0xffU & vlSelf->top__DOT__PCWire));
+    vlSelf->InstructionWire = ((vlSelf->top__DOT__ROM__DOT__rom_array
+                                [(0xffU & vlSelf->top__DOT__PCWire)] 
+                                << 0x18U) | ((vlSelf->top__DOT__ROM__DOT__rom_array
+                                              [(0xffU 
+                                                & ((IData)(1U) 
+                                                   + vlSelf->top__DOT__PCWire))] 
+                                              << 0x10U) 
+                                             | ((vlSelf->top__DOT__ROM__DOT__rom_array
+                                                 [(0xffU 
+                                                   & ((IData)(2U) 
+                                                      + vlSelf->top__DOT__PCWire))] 
+                                                 << 8U) 
+                                                | vlSelf->top__DOT__ROM__DOT__rom_array
+                                                [(0xffU 
+                                                  & ((IData)(3U) 
+                                                     + vlSelf->top__DOT__PCWire))])));
     vlSelf->top__DOT__RD1Wire = vlSelf->top__DOT__RegFile__DOT__register_array
         [(0x1fU & (vlSelf->InstructionWire >> 0xfU))];
 }

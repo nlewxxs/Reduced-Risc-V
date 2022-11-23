@@ -30,8 +30,39 @@ VL_ATTR_COLD void Vtop___024root___settle__TOP__0(Vtop___024root* vlSelf) {
     // Body
     vlSelf->a0out = vlSelf->top__DOT__RegFile__DOT__register_array
         [0xaU];
-    vlSelf->InstructionWire = vlSelf->top__DOT__ROM__DOT__rom_array
-        [(0xffU & vlSelf->top__DOT__PCWire)];
+    VL_WRITEF("%x\n%3#\n",32,((vlSelf->top__DOT__ROM__DOT__rom_array
+                               [(0xffU & vlSelf->top__DOT__PCWire)] 
+                               << 0x18U) | ((vlSelf->top__DOT__ROM__DOT__rom_array
+                                             [(0xffU 
+                                               & ((IData)(1U) 
+                                                  + vlSelf->top__DOT__PCWire))] 
+                                             << 0x10U) 
+                                            | ((vlSelf->top__DOT__ROM__DOT__rom_array
+                                                [(0xffU 
+                                                  & ((IData)(2U) 
+                                                     + vlSelf->top__DOT__PCWire))] 
+                                                << 8U) 
+                                               | vlSelf->top__DOT__ROM__DOT__rom_array
+                                               [(0xffU 
+                                                 & ((IData)(3U) 
+                                                    + vlSelf->top__DOT__PCWire))]))),
+              8,(0xffU & vlSelf->top__DOT__PCWire));
+    vlSelf->InstructionWire = ((vlSelf->top__DOT__ROM__DOT__rom_array
+                                [(0xffU & vlSelf->top__DOT__PCWire)] 
+                                << 0x18U) | ((vlSelf->top__DOT__ROM__DOT__rom_array
+                                              [(0xffU 
+                                                & ((IData)(1U) 
+                                                   + vlSelf->top__DOT__PCWire))] 
+                                              << 0x10U) 
+                                             | ((vlSelf->top__DOT__ROM__DOT__rom_array
+                                                 [(0xffU 
+                                                   & ((IData)(2U) 
+                                                      + vlSelf->top__DOT__PCWire))] 
+                                                 << 8U) 
+                                                | vlSelf->top__DOT__ROM__DOT__rom_array
+                                                [(0xffU 
+                                                  & ((IData)(3U) 
+                                                     + vlSelf->top__DOT__PCWire))])));
     vlSelf->top__DOT__RD1Wire = vlSelf->top__DOT__RegFile__DOT__register_array
         [(0x1fU & (vlSelf->InstructionWire >> 0xfU))];
     vlSelf->top__DOT__control__DOT__opcode = (0x7fU 
@@ -107,9 +138,6 @@ VL_ATTR_COLD void Vtop___024root___eval_initial(Vtop___024root* vlSelf) {
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vtop___024root___eval_initial\n"); );
     // Body
     Vtop___024root___initial__TOP__0(vlSelf);
-    vlSelf->__Vm_traceActivity[2U] = 1U;
-    vlSelf->__Vm_traceActivity[1U] = 1U;
-    vlSelf->__Vm_traceActivity[0U] = 1U;
     vlSelf->__Vclklast__TOP__clk = vlSelf->clk;
 }
 
