@@ -9,6 +9,7 @@ module top #(
 );
 
     logic PCsrsWire;
+    $display("hello ");
     
     logic [DW-1:0] PCWire;
     
