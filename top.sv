@@ -25,7 +25,7 @@ module top #(
     logic [4:0] rs2;
     logic [4:0] rd;
     
-    PC PC(
+    PC1 PC1(
         .clk(clk),
         .rst(rst),
         .PCsrc(PCsrsWire),
